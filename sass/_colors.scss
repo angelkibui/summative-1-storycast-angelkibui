@@ -1,0 +1,23 @@
+@use "tokens" as *;
+
+// Focus ring mixin
+@mixin focus-ring {
+  outline: $focus-ring-width solid $color-focus;
+  outline-offset: $focus-ring-offset;
+  border-radius: $border-radius-sm;
+}
+
+// High contrast mode support
+@media (prefers-contrast: more) {
+  :root {
+    --focus-ring-color: CanvasText;
+  }
+}
+
+// Dark mode support
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg-color: #{$color-dark};
+    --text-color: #{$color-light};
+  }
+}

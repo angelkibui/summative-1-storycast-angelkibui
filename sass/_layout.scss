@@ -1,0 +1,191 @@
+@use "tokens" as *;
+@use "colors" as *;
+
+// Stories Grid (Home Page)
+.stories-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 20rem), 1fr));
+  gap: $space-8;
+  padding: $space-8 0;
+}
+
+// Two-column layout (About page)
+.two-column {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: $space-12;
+  align-items: start;
+
+  @media (max-width: 64rem) {
+    grid-template-columns: 1fr;
+    gap: $space-8;
+  }
+
+  ul {
+    margin-left: $space-6;
+    margin-bottom: $space-4;
+  }
+
+  li {
+    margin-bottom: $space-2;
+  }
+}
+
+// Story detail layout
+.story-layout {
+  display: grid;
+  grid-template-columns: 1fr min(65ch, 100%) 1fr;
+  gap: $space-8;
+  padding: $space-12 $space-6;
+
+  > * {
+    grid-column: 2;
+  }
+
+  .story-media {
+    grid-column: 1 / -1;
+    margin-bottom: $space-8;
+  }
+
+  @media (max-width: 64rem) {
+    grid-template-columns: 1fr;
+    padding: $space-8 $space-4;
+
+    > * {
+      grid-column: 1;
+    }
+  }
+}
+
+// ============================================
+// CONTAINER QUERIES
+// Critical requirement: component adapts to its container
+// ============================================
+
+.story-card-container {
+  container-type: inline-size;
+  container-name: storycard;
+}
+
+.media-card {
+  display: grid;
+  gap: $space-4;
+  background: $color-white;
+  border-radius: $border-radius-lg;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba($color-dark, 0.1);
+  height: 100%;
+  transition: transform 250ms ease-out, box-shadow 250ms ease-out;
+  grid-template-columns: 1fr;
+
+  &:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 24px rgba($color-dark, 0.15);
+  }
+
+  a {
+    text-decoration: none;
+    color: inherit;
+    display: block;
+    height: 100%;
+
+    &:focus-visible {
+      @include focus-ring;
+    }
+  }
+
+  &__thumbnail {
+    aspect-ratio: 16 / 9;
+    background: $color-light;
+    overflow: hidden;
+    position: relative;
+
+    img, video {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 300ms ease-out;
+    }
+  }
+
+  &:hover &__thumbnail img {
+    transform: scale(1.05);
+  }
+
+  &__type {
+    position: absolute;
+    top: $space-3;
+    right: $space-3;
+    display: inline-flex;
+    align-items: center;
+    gap: $space-2;
+    padding: $space-1 $space-3;
+    background: $color-primary;
+    color: $color-white;
+    border-radius: $border-radius-sm;
+    font-size: $font-size-xs;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+
+  &__content {
+    padding: $space-4;
+    display: flex;
+    flex-direction: column;
+    gap: $space-2;
+  }
+
+  &__title {
+    font-size: $font-size-lg;
+    margin-bottom: 0;
+    font-family: $font-heading;
+  }
+
+  &__meta {
+    font-size: $font-size-sm;
+    color: $color-dark;
+    opacity: 0.7;
+    margin-bottom: $space-2;
+  }
+
+  &__content p {
+    font-size: $font-size-sm;
+    line-height: $line-height-normal;
+    margin-bottom: 0;
+    opacity: 0.8;
+  }
+}
+
+// Container Query: Medium container (30rem+)
+@container storycard (min-width: 30rem) {
+  .media-card {
+    grid-template-columns: 40% 1fr;
+
+    &__thumbnail {
+      aspect-ratio: 1 / 1;
+    }
+
+    &__title {
+      font-size: $font-size-xl;
+    }
+  }
+}
+
+// Container Query: Large container (50rem+)
+@container storycard (min-width: 50rem) {
+  .media-card {
+    grid-template-columns: 1fr 1fr;
+
+    &__thumbnail {
+      aspect-ratio: 4 / 3;
+    }
+
+    &__content {
+      padding: $space-6;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+  }
+}

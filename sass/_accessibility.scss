@@ -1,0 +1,107 @@
+@use "tokens" as *;
+@use "colors" as *;
+
+.skip-nav {
+  position: absolute;
+  top: -100%;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: $z-skip;
+  padding: $space-4 $space-6;
+  background: $color-dark;
+  color: $color-white;
+  font-weight: 600;
+  text-decoration: none;
+  border-radius: 0 0 $border-radius-lg $border-radius-lg;
+  transition: top 250ms ease-out;
+
+  &:focus {
+    top: 0;
+    @include focus-ring;
+  }
+}
+
+// Focus visible for keyboard users
+:focus-visible {
+  @include focus-ring;
+}
+
+:focus:not(:focus-visible) {
+  outline: none;
+}
+
+// Reduced Motion
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+// High Contrast Mode
+@media (prefers-contrast: more) {
+  .media-card,
+  .transcript,
+  .audio-player,
+  .video-player {
+    border: 2px solid CanvasText;
+  }
+
+  a {
+    text-decoration: underline;
+  }
+}
+
+// ARIA Live Regions
+[aria-live] {
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  z-index: 300;
+  padding: $space-4;
+  background: $color-dark;
+  color: $color-white;
+  border-radius: $border-radius-lg;
+  max-width: 30rem;
+
+  &:empty {
+    display: none;
+  }
+}
+
+// Print Styles
+@media print {
+  .skip-nav,
+  .transcript__toggle,
+  .mobile-menu-btn {
+    display: none !important;
+  }
+
+  .transcript__content {
+    max-height: none !important;
+  }
+
+  a {
+    text-decoration: underline;
+
+    &::after {
+      content: " (" attr(href) ")";
+      font-size: 0.9em;
+      opacity: 0.7;
+    }
+  }
+
+  .hero {
+    background: white !important;
+    color: black !important;
+  }
+
+  .site-footer {
+    background: white !important;
+    color: black !important;
+  }
+}
