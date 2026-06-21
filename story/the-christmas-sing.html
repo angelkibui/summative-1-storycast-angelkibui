@@ -5,8 +5,90 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="description" content="The Christmas Sing - An accessible audio and video story.">
 <title>The Christmas Sing | StoryCast</title>
-
 <link rel="stylesheet" href="../css/main.css">
+<style>
+  /* TRANSCRIPT DROPDOWN STYLES */
+  .transcript { margin-top: 2rem; border: 1px solid #333; border-left: 4px solid #e94560; border-radius: 8px; overflow: hidden; }
+
+  .transcript__toggle {
+    width: 100%;
+    background: #1a1a2e;
+    color: #fffffe;
+    border: none;
+    padding: 1.2rem 1.5rem;
+    font-size: 1rem;
+    font-weight: 700;
+    text-align: left;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+  }
+
+  .transcript__toggle:hover { background: #0f3460; }
+  .transcript__toggle:focus-visible { outline: 3px solid #ffd803; outline-offset: 2px; }
+
+  .transcript__toggle .arrow {
+    font-size: 1.2rem;
+    transition: transform 0.3s ease;
+    flex-shrink: 0;
+  }
+
+  .transcript__toggle[aria-expanded="true"] .arrow { transform: rotate(180deg); }
+
+  .transcript__body {
+    display: none;
+    background: #111124;
+    padding: 1.5rem;
+    border-top: 1px solid #333;
+  }
+
+  .transcript__body.is-open { display: block; }
+
+  .transcript__body p {
+    margin-bottom: 1.2rem;
+    line-height: 1.8;
+    font-size: 0.95rem;
+    color: #c8c8d8;
+  }
+
+  .timestamp {
+    display: inline-block;
+    background: #e94560;
+    color: #fff;
+    font-size: 0.75rem;
+    font-weight: 700;
+    padding: 2px 8px;
+    border-radius: 20px;
+    margin-right: 8px;
+    font-family: monospace;
+    vertical-align: middle;
+  }
+
+  .speaker {
+    font-weight: 700;
+    color: #ffd803;
+    margin-right: 6px;
+  }
+
+  .transcript__download {
+    display: inline-block;
+    margin-top: 1rem;
+    background: transparent;
+    border: 2px solid #e94560;
+    color: #e94560;
+    padding: 0.5rem 1.2rem;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    font-weight: 700;
+    text-decoration: none;
+    transition: background 0.2s, color 0.2s;
+  }
+
+  .transcript__download:hover { background: #e94560; color: #fff; }
+  .transcript__download:focus-visible { outline: 3px solid #ffd803; outline-offset: 2px; }
+</style>
 </head>
 
 <body>
@@ -16,7 +98,6 @@
 <header class="site-header">
   <div class="container">
     <a href="../index.html" class="site-logo">StoryCast</a>
-
     <nav class="site-nav" aria-label="Main Navigation">
       <ul>
         <li><a href="../index.html">Stories</a></li>
@@ -32,9 +113,7 @@
 
     <header class="story-header">
       <span class="micro-label">Audio + Video Story • 14 Minutes</span>
-
       <h1>The Christmas Sing</h1>
-
       <div class="story-meta">
         <span>December 24, 2024</span>
         <span>StoryCast Editorial Team</span>
@@ -43,156 +122,170 @@
     </header>
 
     <!-- AUDIO -->
-
     <div class="story-media">
-  <figure>
-    <div class="audio-player">
-      <audio controls preload="metadata">
-        <source
-          src="https://listentogenius.com/recordings4/ChristmasSingVillage.mp3"
-          type="audio/mpeg">
-
-        Your browser does not support the audio element.
-      </audio>
-
-      <figcaption>
-        Audio narration of the Christmas Sing tradition.
-      </figcaption>
+      <figure>
+        <div class="audio-player">
+          <audio controls preload="metadata">
+            <source src="https://listentogenius.com/recordings4/ChristmasSingVillage.mp3" type="audio/mpeg">
+            Your browser does not support the audio element.
+          </audio>
+          <figcaption>
+            Audio narration of The Christmas Sing in Our Village by Mary E. Wilkins Freeman, narrated by Beth Richmond.
+          </figcaption>
+        </div>
+      </figure>
     </div>
-  </figure>
-</div>
 
     <!-- VIDEO -->
-
     <div class="story-media">
-  <figure>
-    <div class="video-player">
-
-      <video controls preload="metadata">
-
-        <source
-          src="https://media.istockphoto.com/id/1706410936/video/snowy-house-window-footage-diverse-family-exchanging-christmas-gifts-to-celebrate-christmas.mp4?s=mp4-640x640-is&k=20&c=TzI0lxd2DM9rheuvS_xzvAlAbXkzs5obFM-q78jfSBw="
-          type="video/mp4">
-
-        <track
-          kind="captions"
-          src="../assets/transcripts/christmas-transcript.vtt"
-          srclang="en"
-          label="English Captions"
-          default>
-
-      </video>
-
-      <figcaption>
-        Family members exchanging Christmas gifts inside a warm home during winter.
-      </figcaption>
-
+      <figure>
+        <div class="video-player">
+          <video controls preload="metadata">
+            <source src="https://media.istockphoto.com/id/1706410936/video/snowy-house-window-footage-diverse-family-exchanging-christmas-gifts-to-celebrate-christmas.mp4?s=mp4-640x640-is&k=20&c=TzI0lxd2DM9rheuvS_xzvAlAbXkzs5obFM-q78jfSBw=" type="video/mp4">
+            <track kind="captions" src="../assets/transcripts/christmas-transcript.vtt" srclang="en" label="English Captions" default>
+          </video>
+          <figcaption>
+            Family members exchanging Christmas gifts inside a warm home during winter.
+          </figcaption>
+        </div>
+      </figure>
     </div>
-  </figure>
-</div>
 
     <!-- STORY -->
-
     <section class="story-content">
-
-      <p>
-        Every Christmas Eve, the people of the village gathered in the old
-        town hall for a celebration known simply as The Christmas Sing.
-      </p>
-
-      <p>
-        Families arrived carrying lanterns and wrapped in heavy winter coats.
-        The hall glowed with warm candlelight while evergreen decorations
-        filled the room with the scent of pine.
-      </p>
-
-      <p>
-        As the clock struck eight, the choir began the first song.
-        Voices rose together, filling the hall with music that echoed through
-        the snowy streets outside.
-      </p>
-
-      <p>
-        For many villagers, the Christmas Sing was more than a performance.
-        It was a tradition that connected generations and reminded everyone
-        of the importance of community, kindness, and celebration.
-      </p>
-
+      <p>Every Christmas Eve, the people of the village gathered in the old town hall for a celebration known simply as The Christmas Sing.</p>
+      <p>Families arrived carrying lanterns and wrapped in heavy winter coats. The hall glowed with warm candlelight while evergreen decorations filled the room with the scent of pine.</p>
+      <p>As the clock struck eight, the choir began the first song. Voices rose together, filling the hall with music that echoed through the snowy streets outside.</p>
+      <p>For many villagers, the Christmas Sing was more than a performance. It was a tradition that connected generations and reminded everyone of the importance of community, kindness, and celebration.</p>
     </section>
 
-    <!-- TRANSCRIPT -->
-
+    <!-- TRANSCRIPT DROPDOWN -->
     <section class="transcript" aria-labelledby="transcript-heading">
 
-  <div class="transcript__header">
-    <h2 id="transcript-heading">Full Transcript</h2>
-  </div>
+      <button
+        class="transcript__toggle"
+        id="transcript-btn"
+        aria-expanded="false"
+        aria-controls="transcript-body"
+      >
+        <span id="transcript-heading">📄 Full Audio Transcript — click to expand</span>
+        <span class="arrow" aria-hidden="true">▼</span>
+      </button>
 
-  <div class="transcript__content">
+      <div class="transcript__body" id="transcript-body" role="region" aria-label="Full audio transcript">
 
-    <div class="transcript__text">
+        <p><span class="timestamp">00:00</span><span class="speaker">Narrator:</span> The following is The Christmas Sing in Our Village by Mary E. Wilkins Freeman, narrated by Beth Richmond.</p>
 
-      <p>
-        <span class="timestamp">[00:00]</span>
-        <span class="speaker">Narrator:</span>
-        The Christmas Sing is a cherished tradition in the village, held every year on Christmas Eve.
-      </p>
+        <p><span class="timestamp">00:18</span><span class="speaker">Narrator:</span> The singing school is a regular institution in our village during the winter months, but the one of special interest is held on Christmas Eve — called the Christmas Sing.</p>
 
-      <p>
-        <span class="timestamp">[00:20]</span>
-        <span class="speaker">Narrator:</span>
-        The town hall is decorated with holly and evergreen as families gather after a shared supper.
-      </p>
+        <p><span class="timestamp">00:35</span><span class="speaker">Narrator:</span> On that night only the psalms and fugues appropriate to the occasion are sung, and the town hall is trimmed with holly and evergreen. The sing begins at eight o'clock and is always preceded by a turkey supper.</p>
 
-      <p>
-        <span class="timestamp">[00:45]</span>
-        <span class="speaker">Narrator:</span>
-        Voices rise in harmony as singers perform psalms and festive songs, filling the hall with warmth.
-      </p>
+        <p><span class="timestamp">00:52</span><span class="speaker">Narrator:</span> The supper is at the tavern — now we say hotel — the same old house where the stages drew up before the railroad was built. At least two hours are required to dispose of the good things and speechify.</p>
 
-      <p>
-        <span class="timestamp">[01:10]</span>
-        <span class="speaker">Narrator:</span>
-        Among the crowd, old tensions and quiet rivalries fade into the background of music.
-      </p>
+        <p><span class="timestamp">01:10</span><span class="speaker">Narrator:</span> Then the people cross the road to the town hall where the sing is held. It is a great occasion and the women give as much care to their costumes as if they were going to a ball.</p>
 
-      <p>
-        <span class="timestamp">[01:40]</span>
-        <span class="speaker">Narrator:</span>
-        The conductor raises his baton, guiding the singers through waves of sound and emotion.
-      </p>
+        <p><span class="timestamp">01:28</span><span class="speaker">Narrator:</span> The dressmaker is hard worked for weeks before the sing. Everybody who can afford it has a new dress, and those who cannot have their old ones made over.</p>
 
-      <p>
-        <span class="timestamp">[02:10]</span>
-        <span class="speaker">Narrator:</span>
-        By the end of the night, new connections are formed, and long-standing misunderstandings begin to heal.
-      </p>
+        <p><span class="timestamp">02:05</span><span class="speaker">Narrator:</span> The sing of last year was noteworthy in another respect — there were three betrothals and a runaway marriage that night. It was ideal weather: very cold and clear, a full moon, and beautiful snow for sleighing.</p>
 
-      <p>
-        <span class="timestamp">[02:40]</span>
-        <span class="speaker">Narrator:</span>
-        As the singers return home under the winter sky, the village feels changed—closer, warmer, and more united.
-      </p>
+        <p><span class="timestamp">02:45</span><span class="speaker">Narrator:</span> At six o'clock everybody was assembled at the tavern. Past and present members of the singing school, even old man Veazey who was over ninety, were there.</p>
 
-    </div>
+        <p><span class="timestamp">03:05</span><span class="speaker">Narrator:</span> One of the best speeches was made by Mr. Cassius C. Dowell from East Langham — a fine tenor singer and quite a celebrity who sings in the church choir and is in great demand at funerals.</p>
 
-  </div>
+        <p><span class="timestamp">03:25</span><span class="speaker">Narrator:</span> Lottie Green sat next to him at supper. Mr. Lucius Downey was on her other side, but she paid no attention to him.</p>
 
-</section>
+        <p><span class="timestamp">03:48</span><span class="speaker">Narrator:</span> Lorinda Snell looked very well in a new silk dress, plum color with velvet trimming. Her cheeks were pink, her eyes bright, and her hair most beautifully crimped.</p>
+
+        <p><span class="timestamp">04:10</span><span class="speaker">Narrator:</span> Lottie Green had made over her old blue cloth dress and added silk sleeves — it looked as good as new.</p>
+
+        <p><span class="timestamp">04:32</span><span class="speaker">Narrator:</span> Probably Maria Rice had the finest new dress — pink silk with a square, low-cut waist. A most startling innovation in our village.</p>
+
+        <p><span class="timestamp">04:55</span><span class="speaker">Narrator:</span> Maria wore a great bunch of pink roses on one shoulder. The other girls were half admiring, half scandalized. No such costume had ever been worn to the singing school before.</p>
+
+        <p><span class="timestamp">05:15</span><span class="speaker">Narrator:</span> Poor Zephyretta Stockwell, in a black silk that might have suited her grandmother, was entirely eclipsed by Maria — in more senses than one.</p>
+
+        <p><span class="timestamp">05:38</span><span class="speaker">Narrator:</span> When supper was over the people assembled in the town hall. Green wreaths hung in all the windows, and the portrait of Squire Ebenezer Adams was draped with an American flag.</p>
+
+        <p><span class="timestamp">06:00</span><span class="speaker">Narrator:</span> Our singing master Mr. Orlando Sage stood on the stage and conducted. At eight o'clock he raised his baton, and the music began.</p>
+
+        <p><span class="timestamp">06:22</span><span class="speaker">Narrator:</span> Everybody stood up and sang their best and loudest. The old fugues were grand — had it not been for the weakness in the sopranos.</p>
+
+        <p><span class="timestamp">06:45</span><span class="speaker">Narrator:</span> Mr. Sage waved his baton frantically at the sopranos. Finally, with a stamp of his foot, he brought the whole school to a dead stop.</p>
+
+        <p><span class="timestamp">07:08</span><span class="speaker">Mr. Sage:</span> "Miss Stockwell — why don't you sing?"</p>
+
+        <p><span class="timestamp">07:15</span><span class="speaker">Narrator:</span> Everybody stared at Zephyretta. She turned white, then red, and replied meekly that she was singing.</p>
+
+        <p><span class="timestamp">07:30</span><span class="speaker">Mr. Sage:</span> "No you are not. I rode past your father's yesterday and heard you — you have a voice. Why don't you sing?"</p>
+
+        <p><span class="timestamp">07:52</span><span class="speaker">Narrator:</span> Zephyretta looked as if she would cry. Then Lorinda Snell suddenly spoke for her.</p>
+
+        <p><span class="timestamp">08:15</span><span class="speaker">Lorinda Snell:</span> "I can tell you why, Mr. Sage. Three years ago I heard Maria Rice tell Zephyretta not to sing so loud — she drowned her out — and Zephyretta hasn't sung loud since."</p>
+
+        <p><span class="timestamp">08:40</span><span class="speaker">Narrator:</span> When Lorinda stopped, with a defiant nod, you could have heard a pin drop. Maria Rice was blushing as pink as her dress.</p>
+
+        <p><span class="timestamp">09:00</span><span class="speaker">Narrator:</span> Mr. Sage brought his baton down. "Sing!" he shouted, and we all began again with "When Shepherds Watch Their Flocks by Night."</p>
+
+        <p><span class="timestamp">09:22</span><span class="speaker">Narrator:</span> Zephyretta let out her voice — and we were all amazed. Nobody had dreamed she could sing so well. Maria did not sing again that evening.</p>
+
+        <p><span class="timestamp">09:45</span><span class="speaker">Narrator:</span> At ten o'clock we closed. Many a young woman who had come with her father went home in the sleigh of a gallant swain waiting outside.</p>
+
+        <p><span class="timestamp">10:05</span><span class="speaker">Narrator:</span> Maria Rice was seen lingering and peering toward Jim Payne, then gathering up her pink skirts to walk forlornly home with Lydia Wheelock.</p>
+
+        <p><span class="timestamp">10:28</span><span class="speaker">Narrator:</span> She was barely on the road before Jim Payne and Zephyretta passed her in his sleigh, drawn by his fast black horse. Everybody was astonished.</p>
+
+        <p><span class="timestamp">10:50</span><span class="speaker">Narrator:</span> Mr. Dowell took Lottie Green home. Mr. Downey escorted Lorinda Snell with a lantern — and in its light she looked like a young girl.</p>
+
+        <p><span class="timestamp">11:35</span><span class="speaker">Narrator:</span> The next day we heard all three couples were to be married — and that another young couple had already driven ten miles to Dover to wed that very Christmas Eve.</p>
+
+        <p><span class="timestamp">11:58</span><span class="speaker">Narrator:</span> Jim and Zephyretta are a devoted pair. Lorinda makes a good wife for Lucius Downey. Cassius Dowell seems very happy with Lottie.</p>
+
+        <p><span class="timestamp">12:22</span><span class="speaker">Narrator:</span> Take it all together — that sing seemed to bring much happiness to our village, set, as it were, to sweet Christmas music.</p>
+
+        <p><span class="timestamp">12:48</span><span class="speaker">Narrator:</span> Thank you for listening.</p>
+
+        <a href="../assets/transcripts/christmas-transcript.vtt" class="transcript__download" download aria-label="Download VTT captions file">
+          ⬇ Download captions file (.vtt)
+        </a>
+
+      </div>
+    </section>
 
   </article>
+
+  <!-- RELATED STORIES -->
+  <section class="related-stories" aria-labelledby="related-heading">
+    <div class="container">
+      <h2 id="related-heading">Related Stories</h2>
+      <div class="related-stories__grid">
+        <article class="media-card">
+          <a href="../index.html">
+            <div class="media-card__content">
+              <h3>City of Rhythm</h3>
+              <p>A documentary exploring how music shapes communities in urban spaces.</p>
+            </div>
+          </a>
+        </article>
+        <article class="media-card">
+          <a href="../index.html">
+            <div class="media-card__content">
+              <h3>Silent Echoes</h3>
+              <p>A story told through sign language and spoken word with full captions.</p>
+            </div>
+          </a>
+        </article>
+      </div>
+    </div>
+  </section>
 
 </main>
 
 <footer class="site-footer">
-
   <div class="container">
-
     <div>
       <h3>StoryCast</h3>
       <p>Accessible storytelling for everyone.</p>
     </div>
-
     <div>
       <h3>Navigate</h3>
       <ul>
@@ -200,16 +293,26 @@
         <li><a href="../about.html">About & Access</a></li>
       </ul>
     </div>
-
   </div>
-
   <div class="footer-bottom">
     <p>&copy; 2024 StoryCast</p>
   </div>
-
 </footer>
 
 <script src="../js/main.js"></script>
+<script>
+  // Transcript toggle
+  const btn = document.getElementById('transcript-btn');
+  const body = document.getElementById('transcript-body');
+
+  if (btn && body) {
+    btn.addEventListener('click', function () {
+      const expanded = btn.getAttribute('aria-expanded') === 'true';
+      btn.setAttribute('aria-expanded', String(!expanded));
+      body.classList.toggle('is-open');
+    });
+  }
+</script>
 
 </body>
 </html>
