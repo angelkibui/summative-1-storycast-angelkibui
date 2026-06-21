@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="StoryCast - Accessible audio and video storytelling. Stories that speak to everyone.">
+  <title>StoryCast - Stories That Speak to Everyone</title>
+  <link rel="stylesheet" href="css/main.css">
+</head>
+<body>
+  <a href="#main-content" class="skip-nav">Skip to main content</a>
+
+  <div class="page-grid">
+    <header class="site-header">
+      <div class="container">
+        <a href="index.html" class="site-logo" aria-label="StoryCast Home">StoryCast</a>
+        <nav class="site-nav" aria-label="Main navigation">
+          <ul>
+            <li><a href="index.html" aria-current="page">Stories</a></li>
+            <li><a href="about.html">About &amp; Access</a></li>
+          </ul>
+        </nav>
+        <button class="mobile-menu-btn" aria-label="Toggle menu" aria-expanded="false">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+            <line x1="3" y1="6" x2="21" y2="6"></line>
+            <line x1="3" y1="12" x2="21" y2="12"></line>
+            <line x1="3" y1="18" x2="21" y2="18"></line>
+          </svg>
+        </button>
+      </div>
+    </header>
+
+    <main id="main-content" tabindex="-1">
+      <section class="hero" aria-labelledby="hero-heading">
+        <div class="container">
+          <span class="micro-label">Accessible Storytelling</span>
+          <h1 id="hero-heading">Stories That Speak to Everyone</h1>
+          <p>Audio and video storytelling crafted with accessibility at heart.
+             Transcripts, captions, and descriptions for all.</p>
+          <a href="#featured-stories" class="btn-primary">Explore Stories</a>
+        </div>
+      </section>
+
+      <section id="featured-stories" class="section" aria-labelledby="featured-heading">
+        <div class="container">
+          <h2 id="featured-heading">Featured Stories</h2>
+
+          <div class="stories-grid">
+            <!-- Story Card 1: Audio -->
+            <article class="story-card-container">
+              <div class="media-card">
+                <a href="story/the-christmas-sing.html" aria-labelledby="story1-title">
+                  <div class="media-card__thumbnail">
+                    <img src="https://treehut.co/cdn/shop/articles/friends-singing-christmas-songs-and-drinking-wine-TNF27FQ_1060x550_crop_center.jpg?v=1634027814"
+                         alt="Famly singing christmas songs"
+                         loading="lazy">
+                    <span class="media-card__type" aria-label="Audio story">
+                      <span aria-hidden="true">🔊</span> Audio+video
+                    </span>
+                  </div>
+                  <div class="media-card__content">
+                    <h3 id="story1-title" class="media-card__title">The Christmas Sing</h3>
+                    <p class="media-card__meta">
+                      <time datetime="2024-01-15">January 15, 2024</time> • 14 min
+                    </p>
+                    <p>a poignant short story that centers around a traditional community holiday "Sing".</p>
+                  </div>
+                </a>
+              </div>
+            </article>
+
+            <!-- Story Card 2: Video -->
+            <article class="story-card-container">
+              <div class="media-card">
+                <a href="story/city-of-rhythm.html" aria-labelledby="story2-title">
+                  <div class="media-card__thumbnail">
+                    <img src="https://thumbs.dreamstime.com/b/rainy-night-scene-vibrant-city-colorful-neon-lights-reflect-wet-streets-cars-drive-rain-pixel-art-style-rainy-374324828.jpg?w=992"
+                         alt="Urban street scene at night with warm neon lights reflecting on wet pavement, people walking in silhouette"
+                         loading="lazy">
+                    <span class="media-card__type" aria-label="Video story">
+                      <span aria-hidden="true">🎬</span> Video
+                    </span>
+                  </div>
+                  <div class="media-card__content">
+                    <h3 id="story2-title" class="media-card__title">City of Rhythm</h3>
+                    <p class="media-card__meta">
+                      <time datetime="2024-02-01">February 1, 2024</time> • 18 min
+                    </p>
+                    <p>A documentary exploring how music shapes communities
+                       in urban spaces, with full captions and audio description.</p>
+                  </div>
+                </a>
+              </div>
+            </article>
+
+            <!-- Story Card 3: Sign + Video -->
+            <article class="story-card-container">
+              <div class="media-card">
+                <a href="story/silent-echoes.html" aria-labelledby="story3-title">
+                  <div class="media-card__thumbnail">
+                    <img src="https://static01.nyt.com/images/2025/01/12/magazine/12mag-lor/12mag-lor-superJumbo.jpg?quality=75&auto=webp"
+                         alt="Close-up of expressive hands signing in American Sign Language against a warm neutral background"
+                         loading="lazy">
+                    <span class="media-card__type" aria-label="Video story with sign language">
+                      <span aria-hidden="true">🤟</span> Sign + Video
+                    </span>
+                  </div>
+                  <div class="media-card__content">
+                    <h3 id="story3-title" class="media-card__title">Silent Echoes</h3>
+                    <p class="media-card__meta">
+                      <time datetime="2024-02-20">February 20, 2024</time> • 15 min
+                    </p>
+                    <p>A story told in sign language and spoken word,
+                       with full captions and transcript.</p>
+                  </div>
+                </a>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" aria-labelledby="access-heading" style="background: var(--color-light);">
+        <div class="container">
+          <h2 id="access-heading">Our Accessibility Commitment</h2>
+          <div class="two-column">
+            <div>
+              <p>Every story on StoryCast includes:</p>
+              <ul style="margin-left: 1.5rem; margin-bottom: 1rem;">
+                <li style="margin-bottom: 0.5rem;">Full text transcripts synchronized with media</li>
+                <li style="margin-bottom: 0.5rem;">Closed captions for all video content</li>
+                <li style="margin-bottom: 0.5rem;">Audio descriptions for visual elements</li>
+                <li style="margin-bottom: 0.5rem;">Keyboard-navigable media players</li>
+                <li style="margin-bottom: 0.5rem;">Screen reader optimized markup</li>
+              </ul>
+            </div>
+            <div>
+              <p>We follow <abbr title="Web Content Accessibility Guidelines">WCAG</abbr> 2.1
+                 Level AA standards and continuously test with assistive technologies.</p>
+              <a href="about.html" class="btn-primary" style="margin-top: 1.5rem;">Learn More About Access</a>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container">
+        <div>
+          <h3>StoryCast</h3>
+          <p>Accessible storytelling for everyone.</p>
+        </div>
+        <div>
+          <h3>Navigate</h3>
+          <ul>
+            <li><a href="index.html">All Stories</a></li>
+            <li><a href="about.html">About &amp; Access</a></li>
+          </ul>
+        </div>
+        <div>
+          <h3>Access</h3>
+          <ul>
+            <li><a href="#main-content">Skip to Content</a></li>
+            <li><a href="about.html#accessibility">Accessibility Features</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2024 StoryCast. Built with accessibility at the core.</p>
+      </div>
+    </footer>
+  </div>
+
+  <div id="announcements" aria-live="polite" aria-atomic="true" class="sr-only"></div>
+  <script src="js/main.js"></script>
+</body>
+</html>
